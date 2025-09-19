@@ -192,26 +192,20 @@ private:
   template <typename T>
   bool ParamProvider::getParam(const std::string& param_name, T& value_out) const
   {
-    return getParam(resolved_name_t(param_name), value_out, {});
+    return getParam(resolved_name_t(param_name), value_out);
   }
 
   template <typename T>
   bool ParamProvider::getParam(const resolved_name_t& resolved_name, T& value_out) const
   {
-    return getParam(resolved_name, value_out, {});
+    return loadFromYaml(resolved_name, value_out);
   }
 
   template <typename T>
   bool ParamProvider::getParam(const resolved_name_t& resolved_name, T& value_out, const T& default_value) const
   {
-    // first, try to load from YAML, if enabled
-    if (loadFromYaml(resolved_name, value_out)){
-      return true;
-    }
-    else{
-      value_out = default_value;
-      return true;
-    }
+    value_out = default_value;
+    return loadFromYaml(resolved_name, value_out);
   }
 
   /* setParam() method //{ */

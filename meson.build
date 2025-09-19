@@ -23,3 +23,8 @@ param_loader = shared_library('ParamLoader',
   link_with: param_provider,
   dependencies : [yamlcpp_dep, eigen3_dep],
   install: true)
+
+executable('exec_pp', 'examples/example_param_provider.cpp',
+  include_directories : 'include',
+  link_with: param_provider,
+  dependencies : [yamlcpp_dep, eigen3_dep])
