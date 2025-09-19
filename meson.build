@@ -28,3 +28,7 @@ executable('exec_pp', 'examples/example_param_provider.cpp',
   include_directories : 'include',
   link_with: param_provider,
   dependencies : [yamlcpp_dep, eigen3_dep])
+
+executable('exec_pl', 'examples/example_param_loader.cpp', include_directories : 'include',
+  link_with: [param_loader, param_provider],
+  dependencies : [yamlcpp_dep, eigen3_dep])

@@ -20,7 +20,7 @@ namespace param_loader_cpp
   template bool ParamLoader::loadParamReusable<std::string>(const std::string& name, std::string& out_value, const std::string& default_value);
 
   ParamLoader::ParamLoader(bool printValues)
-      : m_load_successful(true), m_print_values(printValues), m_pp()
+      : m_load_successful(true), m_print_values(printValues)
   {}
 
   /* Constructor overloads //{ */
