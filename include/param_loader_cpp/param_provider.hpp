@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <concepts>
 #include <yaml-cpp/yaml.h>
 
 namespace param_loader_cpp

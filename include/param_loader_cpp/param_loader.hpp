@@ -147,7 +147,7 @@ public:
    * \param printValues  If true, the loaded values will be printed to stdout using std::cout or ROS_INFO if node_name is not empty.
    * \param node_name     Optional node name used when printing the loaded values or loading errors.
    */
-  ParamLoader(bool printValues = true);
+  ParamLoader(bool printValues);
 
   /* Constructor overloads //{ */
   /*!
