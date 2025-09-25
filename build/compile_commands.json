@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/root/workspaces/mrs_ros1/src/param_loader_cpp/build",
+  "command": "/usr/bin/c++ -DParamProvider_EXPORTS -I/root/workspaces/mrs_ros1/src/param_loader_cpp/include -isystem /usr/include/eigen3 -std=gnu++20 -fPIC   -Wall -Wextra -Wpedantic -O0 -g -o CMakeFiles/ParamProvider.dir/src/param_provider/param_provider.cpp.o -c /root/workspaces/mrs_ros1/src/param_loader_cpp/src/param_provider/param_provider.cpp",
+  "file": "/root/workspaces/mrs_ros1/src/param_loader_cpp/src/param_provider/param_provider.cpp",
+  "output": "CMakeFiles/ParamProvider.dir/src/param_provider/param_provider.cpp.o"
+},
+{
+  "directory": "/root/workspaces/mrs_ros1/src/param_loader_cpp/build",
+  "command": "/usr/bin/c++ -DParamLoader_EXPORTS -I/root/workspaces/mrs_ros1/src/param_loader_cpp/include -isystem /usr/include/eigen3 -std=gnu++20 -fPIC   -Wall -Wextra -Wpedantic -O0 -g -o CMakeFiles/ParamLoader.dir/src/param_loader/param_loader.cpp.o -c /root/workspaces/mrs_ros1/src/param_loader_cpp/src/param_loader/param_loader.cpp",
+  "file": "/root/workspaces/mrs_ros1/src/param_loader_cpp/src/param_loader/param_loader.cpp",
+  "output": "CMakeFiles/ParamLoader.dir/src/param_loader/param_loader.cpp.o"
+}
+]
