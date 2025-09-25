@@ -1,8 +1,0 @@
-/root/.local/lib/libParamProvider.so
-/root/.local/lib/libParamLoader.so
-/root/.local/share/param_loader_cpp/cmake/param_loader_cppTargets.cmake
-/root/.local/share/param_loader_cpp/cmake/param_loader_cppTargets-noconfig.cmake
-/root/.local/share/param_loader_cpp/cmake/param_loader_cppConfig.cmake
-/root/.local/share/param_loader_cpp/cmake/param_loader_cppConfigVersion.cmake
-/root/.local/include/param_loader_cpp/param_provider.hpp
-/root/.local/include/param_loader_cpp/param_loader.hpp
