@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <concepts>
+#include <optional>
 #include <yaml-cpp/yaml.h>
 
 namespace param_loader_cpp
