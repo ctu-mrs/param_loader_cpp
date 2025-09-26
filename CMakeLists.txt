@@ -39,6 +39,20 @@ target_include_directories(
                      $<INSTALL_INTERFACE:include>)
 target_link_libraries(ParamLoader PUBLIC ParamProvider)
 
+# exmaple param provider
+add_executable(run_ParamProvider examples/example_param_provider.cpp)
+target_include_directories(
+  run_ParamProvider PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+                     $<INSTALL_INTERFACE:include>)
+target_link_libraries(run_ParamProvider PUBLIC ParamProvider)
+
+# exmaple param loader
+add_executable(run_ParamLoader examples/example_param_loader.cpp)
+target_include_directories(
+  run_ParamLoader PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+                     $<INSTALL_INTERFACE:include>)
+target_link_libraries(run_ParamLoader PUBLIC ParamLoader)
+
 # --------------------------------------------------------------
 # |                           install                          |
 # --------------------------------------------------------------
