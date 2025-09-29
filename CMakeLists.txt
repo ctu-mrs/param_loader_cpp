@@ -17,96 +17,18 @@ foreach(DEP IN LISTS DEPENDENCIES)
   find_package(${DEP} REQUIRED)
 endforeach()
 
-# provides variables containing installation directories
-include(GNUInstallDirs)
-include(CMakePrintHelpers)
-
 # --------------------------------------------------------------
 # |                       compile                              |
 # --------------------------------------------------------------
 
-# Param provider
-add_library(ParamProvider SHARED src/param_provider/param_provider.cpp)
-target_include_directories(
-  ParamProvider PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-                       $<INSTALL_INTERFACE:include>)
-target_link_libraries(ParamProvider PUBLIC yaml-cpp Eigen3::Eigen)
-
-# Param loader
-add_library(ParamLoader SHARED src/param_loader/param_loader.cpp)
-target_include_directories(
-  ParamLoader PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-                     $<INSTALL_INTERFACE:include>)
-target_link_libraries(ParamLoader PUBLIC ParamProvider)
-
-# exmaple param provider
+# example param provider
 add_executable(run_ParamProvider examples/example_param_provider.cpp)
 target_include_directories(
-  run_ParamProvider PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-                     $<INSTALL_INTERFACE:include>)
-target_link_libraries(run_ParamProvider PUBLIC ParamProvider)
+  run_ParamProvider PUBLIC include)
+target_link_libraries(run_ParamProvider PUBLIC yaml-cpp Eigen3::Eigen)
 
-# exmaple param loader
+# example param loader
 add_executable(run_ParamLoader examples/example_param_loader.cpp)
 target_include_directories(
-  run_ParamLoader PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-                     $<INSTALL_INTERFACE:include>)
-target_link_libraries(run_ParamLoader PUBLIC ParamLoader)
-
-# --------------------------------------------------------------
-# |                           install                          |
-# --------------------------------------------------------------
-# ##############################################################################
-# install and export all the targets together              #
-# ##############################################################################
-# setting up the install for the target, export name will be used when exporting
-install(
-  TARGETS ParamProvider ParamLoader
-  EXPORT ${PROJECT_NAME}_Targets
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-
-# export command takes the target and generates a cmake file
-install(
-  EXPORT ${PROJECT_NAME}_Targets
-  FILE ${PROJECT_NAME}Targets.cmake
-  NAMESPACE ${PROJECT_NAME}::
-  DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake)
-
-# ##############################################################################
-# configure cmake config for export                        #
-# ##############################################################################
-# prepare the basic version config file
-include(CMakePackageConfigHelpers)
-write_basic_package_version_file(
-  "${PROJECT_NAME}ConfigVersion.cmake"
-  VERSION ${PROJECT_VERSION}
-  COMPATIBILITY SameMajorVersion)
-
-# set the variables that must be exported for use by other libraries
-set(INCLUDE_INSTALL_DIR
-    ${CMAKE_INSTALL_INCLUDEDIR}
-    CACHE PATH "Location of header files")
-set(LIB_INSTALL_DIR
-    ${CMAKE_INSTALL_LIBDIR}
-    CACHE PATH "Location of library files")
-
-# cmake helper to generate config file using cmake.in file
-configure_package_config_file(
-  "${PROJECT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"
-  "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-  INSTALL_DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake
-  PATH_VARS INCLUDE_INSTALL_DIR LIB_INSTALL_DIR)
-
-# ##############################################################################
-# install/copy the header files and cmake config           #
-# ##############################################################################
-# copy the generated cmake files to the install destination
-install(FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-              "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake)
-
-# finally copy the header files
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+  run_ParamLoader PUBLIC include)
+target_link_libraries(run_ParamLoader PUBLIC yaml-cpp Eigen3::Eigen)
