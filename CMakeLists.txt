@@ -21,13 +21,13 @@ endforeach()
 # |                       compile                              |
 # --------------------------------------------------------------
 
-# exmaple param provider
+# example param provider
 add_executable(run_ParamProvider examples/example_param_provider.cpp)
 target_include_directories(
   run_ParamProvider PUBLIC include)
 target_link_libraries(run_ParamProvider PUBLIC yaml-cpp Eigen3::Eigen)
 
-# exmaple param loader
+# example param loader
 add_executable(run_ParamLoader examples/example_param_loader.cpp)
 target_include_directories(
   run_ParamLoader PUBLIC include)
