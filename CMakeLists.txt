@@ -11,7 +11,7 @@ add_definitions("-Wpedantic")
 add_definitions("-O0")
 add_definitions("-g")
 
-set(DEPENDENCIES yaml-cpp Eigen3)
+set(DEPENDENCIES rclcpp yaml-cpp Eigen3)
 
 foreach(DEP IN LISTS DEPENDENCIES)
   find_package(${DEP} REQUIRED)
@@ -32,3 +32,9 @@ add_executable(run_ParamLoader examples/example_param_loader.cpp)
 target_include_directories(
   run_ParamLoader PUBLIC include)
 target_link_libraries(run_ParamLoader PUBLIC yaml-cpp Eigen3::Eigen)
+
+# example node
+add_executable(run_Node examples/example_node.cpp)
+target_include_directories(
+  run_Node PUBLIC include)
+target_link_libraries(run_Node PUBLIC rclcpp::rclcpp yaml-cpp Eigen3::Eigen)
