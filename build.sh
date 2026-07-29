@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+cp examples/config/test.yaml /tmp/test.yaml
 echo "----------------"
 echo "remove build dir"
 echo "----------------"
@@ -12,8 +13,8 @@ echo "----------------"
 mkdir build && cd build
 echo "----------------"
 
-echo "Running cmake"
+echo "running cmake"
 echo "----------------"
-cmake .. -DCMAKE_INSTALL_PREFIX:PATH=~/.local
-cmake --build . --config Release --target install -- -j $(nproc)
+cmake ..
+cmake --build . --config Release
 echo "-------------------"
